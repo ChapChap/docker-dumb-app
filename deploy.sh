@@ -52,9 +52,13 @@ echo "OK"
 #################
 
 GIT_REPO="https://github.com/ChapChap/docker-dumb-app.git"
-GIT_BRANCH="master"
+GIT_DEFAULT_BRANCH="master"
 APP_DIR="/var/opt/dumb-app/"
 IMG_NAME="dumb-app"
+
+echo -n "Enter branch name to pull (default: master) : "
+read GIT_BRANCH
+GIT_BRANCH=${GIT_BRANCH:-$GIT_DEFAULT_BRANCH}
 
 echo -n "Building Image... "
 bash -c "${SSH_CONNECTION} sudo rm -rf ${APP_DIR} > /dev/null"
