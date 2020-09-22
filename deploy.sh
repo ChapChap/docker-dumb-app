@@ -73,12 +73,12 @@ echo "OK"
 #################
 
 APP_NAME="dumb-app"
-PORT="8080"
+PORT="3000"
 
 echo -n "Deploying App... "
 bash -c "${SSH_CONNECTION} sudo docker stop ${APP_NAME} &> /dev/null"
 bash -c "${SSH_CONNECTION} sudo docker rm ${APP_NAME} &> /dev/null"
-bash -c "${SSH_CONNECTION} sudo docker run -dit --name=${APP_NAME} --restart=always -p 8080:${PORT} ${IMG_NAME} > /dev/null"
+bash -c "${SSH_CONNECTION} sudo docker run -dit --name=${APP_NAME} --restart=always -p ${PORT}:8080 ${IMG_NAME} > /dev/null"
 echo "OK"
 echo
 echo "Go to http://${INSTANCE_NAME}:${PORT}"
