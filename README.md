@@ -35,3 +35,24 @@
 3) App deployment
    1) stop and suppr old container
    2) run new one
+
+## Cloud Builds (GCP)
+
+### Cloud Builds - Container Engine
+
+Il va permettre de construire l'image docker à chaque commit sur le repo spécifié (ici Github)
+
+Pour ce faire il faut connecter le dépôt Github sur GCP > Cloud Build
+
+- Authoriser Cloud Build à pull Github
+- Installer l'app Cloud Build dans le repo
+- Valider en créant un déclencheur le repo
+
+L'output sera une image hebergée dans la registry GCP
+Test: en passant l'image de Privée à Publique, je peux la lancer en local
+
+Il est possible ensuite de déployer cette image dans GCP GCE, GKE, ou Cloud Run
+
+Configurer manuellement un déploiement sur Cloud Run est OK
+Il est possible d'activer un déploiement continu via Cloud Build
+Celui-ci va se déclencher au commit sur le Github, construire l'image et la déployer dans Cloud Run
